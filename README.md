@@ -1,23 +1,25 @@
-CFO Copilot
-===========
+# CFO Copilot
 
-CFO Copilot is a lightweight Streamlit app that helps finance teams answer common FP&A questions from monthly CSV data. It generates textual insights and interactive charts, with optional PDF export.
+CFO Copilot is a lightweight **Streamlit app** that helps finance teams answer common FP&A questions from monthly CSV data. It generates textual insights and interactive charts, with optional PDF export.
 
-Features
---------
+---
 
-- Intent-based analysis:
-  - Revenue (USD): Actual vs. Budget
-  - Gross Margin %: (Revenue – COGS) / Revenue
-  - Opex total (USD): Grouped by Opex categories
-  - EBITDA (proxy): Revenue – COGS – Opex
-  - Cash Runway: Latest cash ÷ Avg monthly net burn (last 3 months)
-- Interactive Plotly charts inline in Streamlit
-- Optional PDF export for Revenue trend and Opex breakdown
+## Features
 
-Project Structure
------------------
+- **Intent-based analysis:**
+  - **Revenue (USD):** Actual vs. Budget
+  - **Gross Margin %:** (Revenue – COGS) / Revenue
+  - **Opex total (USD):** Grouped by Opex categories
+  - **EBITDA (proxy):** Revenue – COGS – Opex
+  - **Cash Runway:** Latest cash ÷ Avg monthly net burn (last 3 months)
+- **Interactive Plotly charts** inline in Streamlit
+- **Optional PDF export** for Revenue trend and Opex breakdown
 
+---
+
+## Project Structure
+
+```
 cfo-copilot/
 ├── app.py
 ├── requirements.txt
@@ -34,76 +36,93 @@ cfo-copilot/
 └── tests/
     ├── test_metrics.py
     └── conftest.py
+```
 
-Data Format
------------
+---
 
-Place CSVs under a data directory (default: fixtures/) or configure via sidebar/env var.
+## Data Format
 
-Required CSVs:
+Place CSVs under a **data directory** (default: `fixtures/`) or configure via sidebar/env var.
 
-1. actuals.csv – Monthly actuals by entity/account
-2. budget.csv – Monthly budget by entity/account
-3. fx.csv – Currency exchange rates to USD
-4. cash.csv – Monthly cash balances
+**Required CSVs:**
 
-Flexible Column Detection:
+1. `actuals.csv` – Monthly actuals by entity/account  
+2. `budget.csv` – Monthly budget by entity/account  
+3. `fx.csv` – Currency exchange rates to USD  
+4. `cash.csv` – Monthly cash balances  
 
-- Month/Date: month or date (normalized to month-start)
-- Account: account_category, account, etc.
-- Amount: amount (or first numeric column)
-- Currency: Defaults to USD if missing
+**Flexible Column Detection:**
 
-fx.csv example columns: month, currency, rate_to_usd
+- **Month/Date:** month or date (normalized to month-start)  
+- **Account:** account_category, account, etc.  
+- **Amount:** amount (or first numeric column)  
+- **Currency:** Defaults to USD if missing  
 
-Setup
------
+`fx.csv` example columns: `month`, `currency`, `rate_to_usd`
 
+---
+
+## Setup
+
+Open a terminal and run:
+
+```bash
 cd /Users/yashaswipatki/Downloads/cfo-copilot
 python3 -m venv .venv
 source .venv/bin/activate      # Windows: .venv\Scripts\activate
 pip install --upgrade pip
 pip install -r requirements.txt
+```
 
-Run the App
------------
+---
 
+## Run the App
+
+```bash
 which streamlit  # ensure using venv version
 streamlit run app.py
+```
 
-Set your data directory in the sidebar (e.g., /Users/yashaswipatki/Downloads/cfo-copilot/fixtures)
+Set your **data directory** in the sidebar (e.g., `/Users/yashaswipatki/Downloads/cfo-copilot/fixtures`).
 
-Sample Questions:
+**Sample Questions:**
 
-- What was January 2023 revenue vs budget in USD?
-- Show Gross Margin % trend for the last 3 months.
-- Break down Opex by category for January 2023.
-- What is our cash runway right now?
+- What was January 2023 revenue vs budget in USD?  
+- Show Gross Margin % trend for the last 3 months.  
+- Break down Opex by category for January 2023.  
+- What is our cash runway right now?  
 
-Optional: Export PDF
---------------------
+---
+
+## Optional: Export PDF
 
 Generates 1–2 pages (Revenue trend and Opex breakdown).
 
+```bash
 pip install reportlab kaleido
+```
 
-Restart Streamlit if installed after app launch.
+> Restart Streamlit if installed after app launch.
 
-Tests
------
+---
+
+## Tests
 
 Minimal smoke test:
 
+```bash
 PYTHONPATH=. pytest -q
+```
 
-or with tests/conftest.py:
+Or with `tests/conftest.py`:
 
+```bash
 pytest -q
+```
 
-Demo
-----
+---
+
+## Demo
 
 Screen recording (QuickTime on macOS):  
-https://drive.google.com/file/d/1fo2Dlzm8fRH6LMIVDmXmxa-WOQJ4wC1x/view?usp=sharing
-
-
+[Watch Demo](https://drive.google.com/file/d/1fo2Dlzm8fRH6LMIVDmXmxa-WOQJ4wC1x/view?usp=sharing)
