@@ -126,3 +126,6 @@ pytest -q
 
 Screen recording (QuickTime on macOS):  
 [Watch Demo](https://drive.google.com/file/d/1fo2Dlzm8fRH6LMIVDmXmxa-WOQJ4wC1x/view?usp=sharing)
+
+Deployed agent link: https://huggingface.co/spaces/yashaswip1234456/CFO_mini_agent
+
